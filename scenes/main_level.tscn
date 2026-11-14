@@ -1,19 +1,14 @@
 [gd_scene format=3 uid="uid://opr1bhpsl2xs"]
 
 [ext_resource type="PackedScene" uid="uid://cxl5j8a8ta86q" path="res://scenes/player.tscn" id="1_v3uhd"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sjx3v"]
-normal = Vector2(0.006535808, -0.99997866)
-distance = -215.31667
+[ext_resource type="PackedScene" uid="uid://dd8113oel71qp" path="res://scenes/grunt.tscn" id="2_ufxs0"]
 
 [node name="main-level" type="Node2D" unique_id=990088837]
 
 [node name="Player" parent="." unique_id=328166879 instance=ExtResource("1_v3uhd")]
-roll_limit = 200.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1675722495]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1078749375]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1762307023]
-shape = SubResource("WorldBoundaryShape2D_sjx3v")
+[node name="Grunt" parent="." unique_id=1709366035 node_paths=PackedStringArray("target") instance=ExtResource("2_ufxs0")]
+position = Vector2(-408, 15)
+target = NodePath("../Player")
