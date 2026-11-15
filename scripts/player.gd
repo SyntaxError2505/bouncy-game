@@ -1,17 +1,11 @@
 extends CharacterBody2D
 
-<<<<<<< HEAD
 @export var speed: float = 300.0;
 @export var roll_limit: float = 600.0;
 @export var launch_speed: float = 3000.0;
-=======
-@export var speed: float = 300.0
-@export var roll_limit: float = 600.0
-@export var launch_speed: float = 3000.0
 @export var max_health: float = 100.0
 @export var roll_damage: float = 50
 var health: float = max_health
->>>>>>> c4f533a (idk :()
 var jump_strength: float = 1
 
 var rolling: bool = false
