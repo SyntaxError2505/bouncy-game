@@ -35,9 +35,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Grunt" type="CharacterBody2D" unique_id=1709366035 node_paths=PackedStringArray("target")]
+[node name="Grunt" type="CharacterBody2D" unique_id=1709366035 node_paths=PackedStringArray("target", "animation_player") groups=["Enemies"]]
 script = ExtResource("1_6upo6")
 target = NodePath("AnimatedSprite2D")
+animation_player = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1226920458]
 shape = SubResource("CircleShape2D_g2els")
