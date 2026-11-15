@@ -129,7 +129,7 @@ position_smoothing_enabled = true
 script = ExtResource("3_dinhu")
 
 [node name="Grunt" parent="." unique_id=1709366035 node_paths=PackedStringArray("target") instance=ExtResource("4_kvpfn")]
-position = Vector2(-102, -180)
+position = Vector2(-102, -181)
 target = NodePath("../Player")
 
 [node name="WorldAudioManager" type="Node" parent="." unique_id=36362369]

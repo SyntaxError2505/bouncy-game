@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btod88yd15g5k" path="res://scripts/enemy.gd" id="1_6upo6"]
 [ext_resource type="Texture2D" uid="uid://b0qoyif5acyg4" path="res://sprites/arena1_enemy.png" id="2_6upo6"]
+[ext_resource type="PackedScene" uid="uid://c66eo73a08s0l" path="res://scenes/Bullet.tscn" id="2_t8odd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 24.0
@@ -38,7 +39,16 @@ animations = [{
 [node name="Grunt" type="CharacterBody2D" unique_id=1709366035 node_paths=PackedStringArray("target", "animation_player") groups=["Enemies"]]
 script = ExtResource("1_6upo6")
 target = NodePath("AnimatedSprite2D")
+bullet_scene = ExtResource("2_t8odd")
+speed = 300.0
+max_health = 100
+damage = 10
+prefered_distance = 500.0
+distance_buffer = 50.0
 animation_player = NodePath("AnimatedSprite2D")
+shoot_cooldown = 0.2
+bullet_speed = 600.0
+spawn_buffer = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1226920458]
 shape = SubResource("CircleShape2D_g2els")

@@ -52,7 +52,6 @@ func _physics_process(delta: float):
 	
 	var collision = move_and_collide(velocity * delta)
 	if collision and rolling:
-		print("collision while rolling")
 		launch(collision.get_normal() * jump_strength * launch_speed)
 		jump_strength -= 0.1
 		var collider = collision.get_collider()

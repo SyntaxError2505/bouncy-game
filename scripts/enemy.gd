@@ -1,13 +1,31 @@
 extends CharacterBody2D
 
 @export var target: Node2D
-@export var speed: float = 400.0
-@export var max_health: int = 100
-@export var damage: int = 20
+@export var bullet_scene: PackedScene
+@export var speed: float
+@export var max_health: int
+@export var damage: int
 @export var health: int
-@export var prefered_distance: float = 200.0
-@export var distance_buffer: float = 50.0
+@export var prefered_distance: float
+@export var distance_buffer: float
 @export var animation_player: AnimatedSprite2D
+@export var shoot_cooldown: float
+@export var bullet_speed: float
+@export var spawn_buffer: float
+
+var can_shoot: bool = true;
+
+func shoot():
+	if can_shoot:
+		var bullet_instance = bullet_scene.instantiate()
+		bullet_instance.global_transform = global_transform
+		bullet_instance.speed = bullet_speed
+		bullet_instance.damage = damage
+		bullet_instance.direction = Vector2(target.position.x - position.x, target.position.y - position.y).normalized()
+		get_parent().add_child(bullet_instance)
+		can_shoot = false
+		await get_tree().create_timer(shoot_cooldown).timeout
+		can_shoot = true
 
 func _ready():
 	health = max_health
@@ -29,12 +47,7 @@ func _physics_process(delta: float) -> void:
 			# to close
 			velocity = dir_vector.normalized() * speed * -1
 		else:
-			# to close but within buffer
+			# to close but within buffer2
 			velocity = Vector2.ZERO
-	var collision = move_and_collide(velocity * delta)
-
-	if(collision):
-		var collider = collision.get_collider()
-		if collider.is_in_group("Player") and !collider.get("rolling"):
-			collider.set("health", collider.get("health") - 20)
-			print(collider.get("health"))
+			shoot()
+	move_and_slide()

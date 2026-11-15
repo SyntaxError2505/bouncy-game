@@ -1,3 +1,51 @@
 [gd_scene format=3 uid="uid://c66eo73a08s0l"]
 
+[ext_resource type="Texture2D" uid="uid://cn63qpp3mkcp6" path="res://sprites/flame.png" id="1_hf8mt"]
+[ext_resource type="Script" uid="uid://ompcp27f5wpu" path="res://scripts/bullet.gd" id="1_p1sfj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1sfj"]
+atlas = ExtResource("1_hf8mt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4utqk"]
+atlas = ExtResource("1_hf8mt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51h0o"]
+atlas = ExtResource("1_hf8mt")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6xe6r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1sfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4utqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51h0o")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6xe6r"]
+radius = 6.3245554
+
 [node name="Bullet" type="CharacterBody2D" unique_id=1760140432]
+collision_layer = 0
+script = ExtResource("1_p1sfj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1247800505]
+position = Vector2(0, -3)
+scale = Vector2(3.75, 3.75)
+sprite_frames = SubResource("SpriteFrames_6xe6r")
+frame_progress = 0.023729095
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=687027448]
+position = Vector2(-1, -3)
+shape = SubResource("CircleShape2D_6xe6r")
+one_way_collision_direction = Vector2(0.93015516, -0.36716652)
