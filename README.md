@@ -5,4 +5,8 @@ During two days, [Syntaxerror2505](https://github.com/SyntaxError2505), [the-cod
 This is a demo version of something that may be never finished. So lean back, enjoy the game for five minutes and have it forgotten tomorrow. You may follow us.
 
 ## Controls
-WASD, left-click to dash. Collect all the fire slime balls and don't get sniped.
+WASD, left-click to dash. Collect all the fire slime balls dashing into them and don't get shot.
+
+## How to play
+- Clone this repository and open a godot project (yk how)
+- itch.io: [click_me](https://syntaxerror2505.itch.io/bounce-adventure)
