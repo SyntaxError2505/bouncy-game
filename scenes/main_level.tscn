@@ -121,3 +121,15 @@ script = ExtResource("3_5fr2l")
 stream = SubResource("AudioStreamInteractive_gwrw2")
 autoplay = true
 script = SubResource("GDScript_2sb77")
+
+[node name="Grunt2" parent="." unique_id=937611936 node_paths=PackedStringArray("target") groups=["Enemies"] instance=ExtResource("2_ufxs0")]
+position = Vector2(-244, 76)
+target = NodePath("../Player")
+
+[node name="Grunt3" parent="." unique_id=1025062188 node_paths=PackedStringArray("target") groups=["Enemies"] instance=ExtResource("2_ufxs0")]
+position = Vector2(-167, -114)
+target = NodePath("../Player")
+
+[node name="Grunt4" parent="." unique_id=1515741091 node_paths=PackedStringArray("target") groups=["Enemies"] instance=ExtResource("2_ufxs0")]
+position = Vector2(131, -185)
+target = NodePath("../Player")
