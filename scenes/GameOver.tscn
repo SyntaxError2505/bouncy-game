@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://de3tj46bcnscx"]
+
+[ext_resource type="Texture2D" uid="uid://cq03biaigflrp" path="res://sprites/gameover.png" id="1_6bcno"]
+
+[node name="GameOver" type="Node2D" unique_id=997838702]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1283544940]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1638186666]
+scale = Vector2(13.100001, 13.100001)
+texture = ExtResource("1_6bcno")
