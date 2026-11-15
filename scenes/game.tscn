@@ -3,30 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://bg2i4ou667ibo" path="res://scenes/level1.tscn" id="1_vtaks"]
 [ext_resource type="PackedScene" uid="uid://cxl5j8a8ta86q" path="res://scenes/player.tscn" id="2_kvpfn"]
 [ext_resource type="Script" uid="uid://dit8qy2ghemgb" path="res://scripts/cam.gd" id="3_dinhu"]
+[ext_resource type="Script" uid="uid://jwpfjauhq5i1" path="res://scenes/game-over-manager.gd" id="4_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dd8113oel71qp" path="res://scenes/grunt.tscn" id="4_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://byj7ow2fewlfb" path="res://audio/music/arena1.1.wav" id="4_kvuet"]
+[ext_resource type="PackedScene" uid="uid://de3tj46bcnscx" path="res://scenes/GameOver.tscn" id="5_kvuet"]
 [ext_resource type="AudioStream" uid="uid://4x7k3fde3q3m" path="res://audio/music/arena1.2.wav" id="5_trtic"]
 [ext_resource type="AudioStream" uid="uid://c0x2dqa2sgl2b" path="res://audio/music/arena1.3.wav" id="6_ir15t"]
 [ext_resource type="AudioStream" uid="uid://cucidg4kugfbl" path="res://audio/music/arena2.1.wav" id="7_ca42v"]
 [ext_resource type="AudioStream" uid="uid://bn6on8upyv0cp" path="res://audio/music/arena2.2.wav" id="8_rysoc"]
 [ext_resource type="AudioStream" uid="uid://6jhb7dmllcqb" path="res://audio/music/arena2.3.wav" id="9_ssvqc"]
 [ext_resource type="AudioStream" uid="uid://55w3dy6mct8i" path="res://audio/music/the_void.wav" id="10_264po"]
-
-[sub_resource type="GDScript" id="GDScript_5fr2l"]
-script/source = "extends Node
-@export var bg_music_player: AudioStreamPlayer
-var current_level: String
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [sub_resource type="GDScript" id="GDScript_iqu8w"]
 script/source = "extends Node
@@ -112,7 +98,8 @@ func _process(delta: float) -> void:
 "
 
 [node name="game" type="Node2D" unique_id=990088837]
-script = SubResource("GDScript_5fr2l")
+script = ExtResource("4_dinhu")
+game_over_scene = ExtResource("5_kvuet")
 
 [node name="Level1" parent="." unique_id=1777534926 instance=ExtResource("1_vtaks")]
 position = Vector2(-1594, -1427)
@@ -128,10 +115,6 @@ roll_damage = 50.0
 position_smoothing_enabled = true
 script = ExtResource("3_dinhu")
 
-[node name="Grunt" parent="." unique_id=1709366035 node_paths=PackedStringArray("target") instance=ExtResource("4_kvpfn")]
-position = Vector2(-102, -181)
-target = NodePath("../Player")
-
 [node name="WorldAudioManager" type="Node" parent="." unique_id=36362369]
 script = SubResource("GDScript_iqu8w")
 
@@ -139,3 +122,29 @@ script = SubResource("GDScript_iqu8w")
 stream = SubResource("AudioStreamInteractive_gwrw2")
 autoplay = true
 script = SubResource("GDScript_2sb77")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=287640652]
+
+[node name="Grunt" parent="Enemies" unique_id=1709366035 node_paths=PackedStringArray("target") instance=ExtResource("4_kvpfn")]
+position = Vector2(-102, -181)
+target = NodePath("../../Player")
+
+[node name="Grunt3" parent="Enemies" unique_id=1752466290 node_paths=PackedStringArray("target") instance=ExtResource("4_kvpfn")]
+position = Vector2(-778, 400)
+target = NodePath("../../Player")
+
+[node name="Grunt4" parent="Enemies" unique_id=952501975 node_paths=PackedStringArray("target") instance=ExtResource("4_kvpfn")]
+position = Vector2(-476, 591)
+target = NodePath("../../Player")
+
+[node name="Grunt5" parent="Enemies" unique_id=1438676134 node_paths=PackedStringArray("target") instance=ExtResource("4_kvpfn")]
+position = Vector2(722, 608)
+target = NodePath("../../Player")
+
+[node name="Grunt6" parent="Enemies" unique_id=1682598980 node_paths=PackedStringArray("target") instance=ExtResource("4_kvpfn")]
+position = Vector2(648, 60)
+target = NodePath("../../Player")
+
+[node name="Grunt7" parent="Enemies" unique_id=1996728128 node_paths=PackedStringArray("target") instance=ExtResource("4_kvpfn")]
+position = Vector2(-610, -325)
+target = NodePath("../../Player")
