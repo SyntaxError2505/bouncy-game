@@ -35,8 +35,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Grunt" type="CharacterBody2D" unique_id=1709366035]
+[node name="Grunt" type="CharacterBody2D" unique_id=1709366035 node_paths=PackedStringArray("target")]
 script = ExtResource("1_6upo6")
+target = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1226920458]
 shape = SubResource("CircleShape2D_g2els")
@@ -44,4 +45,4 @@ shape = SubResource("CircleShape2D_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=643532312]
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_6xe6r")
-frame_progress = 0.5532832
+frame_progress = 0.41373608

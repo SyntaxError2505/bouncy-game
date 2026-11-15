@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bg2i4ou667ibo" path="res://scenes/level1.tscn" id="1_5fr2l"]
 [ext_resource type="PackedScene" uid="uid://cxl5j8a8ta86q" path="res://scenes/player.tscn" id="1_v3uhd"]
-[ext_resource type="PackedScene" uid="uid://dd8113oel71qp" path="res://scenes/grunt.tscn" id="2_ufxs0"]
 [ext_resource type="AudioStream" uid="uid://byj7ow2fewlfb" path="res://audio/music/arena1.1.wav" id="3_k5pu3"]
 [ext_resource type="AudioStream" uid="uid://4x7k3fde3q3m" path="res://audio/music/arena1.2.wav" id="4_iqu8w"]
 [ext_resource type="AudioStream" uid="uid://c0x2dqa2sgl2b" path="res://audio/music/arena1.3.wav" id="5_5fr2l"]
@@ -140,10 +139,6 @@ roll_damage = 50.0
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1675722495]
 script = SubResource("GDScript_fkrx8")
 
-[node name="Grunt" parent="." unique_id=1709366035 node_paths=PackedStringArray("target") groups=["Enemies"] instance=ExtResource("2_ufxs0")]
-position = Vector2(-640, -137)
-target = NodePath("../Player")
-
 [node name="WorldAudioManager" type="Node" parent="." unique_id=36362369]
 script = SubResource("GDScript_iqu8w")
 
@@ -151,15 +146,3 @@ script = SubResource("GDScript_iqu8w")
 stream = SubResource("AudioStreamInteractive_gwrw2")
 autoplay = true
 script = SubResource("GDScript_2sb77")
-
-[node name="Grunt2" parent="." unique_id=937611936 node_paths=PackedStringArray("target") groups=["Enemies"] instance=ExtResource("2_ufxs0")]
-position = Vector2(-373, 422)
-target = NodePath("../Player")
-
-[node name="Grunt3" parent="." unique_id=1025062188 node_paths=PackedStringArray("target") groups=["Enemies"] instance=ExtResource("2_ufxs0")]
-position = Vector2(-167, -114)
-target = NodePath("../Player")
-
-[node name="Grunt4" parent="." unique_id=1515741091 node_paths=PackedStringArray("target") groups=["Enemies"] instance=ExtResource("2_ufxs0")]
-position = Vector2(131, -185)
-target = NodePath("../Player")

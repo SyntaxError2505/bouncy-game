@@ -7,11 +7,15 @@ extends CharacterBody2D
 @export var health: int
 @export var prefered_distance: float = 200.0
 @export var distance_buffer: float = 50.0
+@export var animation_player: AnimatedSprite2D
 
 func _ready():
 	health = max_health
 
 func _physics_process(delta: float) -> void:
+	# animation
+	animation_player.play("default")
+
 	# death
 	if health <= 0:
 		queue_free()
