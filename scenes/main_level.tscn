@@ -100,12 +100,17 @@ func _process(delta: float) -> void:
 [node name="game" type="Node2D" unique_id=990088837]
 script = SubResource("GDScript_5fr2l")
 
-[node name="Player" parent="." unique_id=328166879 instance=ExtResource("1_v3uhd")]
+[node name="Player" parent="." unique_id=328166879 groups=["Player"] instance=ExtResource("1_v3uhd")]
+speed = 300.0
+roll_limit = 600.0
+launch_speed = 3000.0
+max_health = 100.0
+roll_damage = 50.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1675722495]
 script = ExtResource("2_2sb77")
 
-[node name="Grunt" parent="." unique_id=1709366035 node_paths=PackedStringArray("target") instance=ExtResource("2_ufxs0")]
+[node name="Grunt" parent="." unique_id=1709366035 node_paths=PackedStringArray("target") groups=["Enemies"] instance=ExtResource("2_ufxs0")]
 position = Vector2(-408, 15)
 target = NodePath("../Player")
 
