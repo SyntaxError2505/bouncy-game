@@ -1,14 +1,118 @@
 [gd_scene format=3 uid="uid://opr1bhpsl2xs"]
 
 [ext_resource type="PackedScene" uid="uid://cxl5j8a8ta86q" path="res://scenes/player.tscn" id="1_v3uhd"]
+[ext_resource type="Script" uid="uid://cufbdccc1u7ne" path="res://scenes/cam.gd" id="2_2sb77"]
 [ext_resource type="PackedScene" uid="uid://dd8113oel71qp" path="res://scenes/grunt.tscn" id="2_ufxs0"]
+[ext_resource type="Script" uid="uid://ckcr3g1yawyh7" path="res://scenes/world_audio_manager.gd" id="3_5fr2l"]
+[ext_resource type="AudioStream" uid="uid://byj7ow2fewlfb" path="res://audio/music/arena1.1.wav" id="3_k5pu3"]
+[ext_resource type="AudioStream" uid="uid://4x7k3fde3q3m" path="res://audio/music/arena1.2.wav" id="4_iqu8w"]
+[ext_resource type="AudioStream" uid="uid://c0x2dqa2sgl2b" path="res://audio/music/arena1.3.wav" id="5_5fr2l"]
+[ext_resource type="AudioStream" uid="uid://cucidg4kugfbl" path="res://audio/music/arena2.1.wav" id="6_2sb77"]
+[ext_resource type="AudioStream" uid="uid://bn6on8upyv0cp" path="res://audio/music/arena2.2.wav" id="7_fkrx8"]
+[ext_resource type="AudioStream" uid="uid://6jhb7dmllcqb" path="res://audio/music/arena2.3.wav" id="8_mwgft"]
+[ext_resource type="AudioStream" uid="uid://55w3dy6mct8i" path="res://audio/music/the_void.wav" id="9_iqu8w"]
 
-[node name="main-level" type="Node2D" unique_id=990088837]
+[sub_resource type="GDScript" id="GDScript_5fr2l"]
+script/source = "extends Node
+@export var bg_music_player: AudioStreamPlayer
+var current_level: String
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_5tvy6"]
+shuffle = true
+fade_time = 0.0
+stream_count = 2
+stream_0 = ExtResource("4_iqu8w")
+stream_1 = ExtResource("5_5fr2l")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_o13t2"]
+stream_count = 2
+stream_0 = ExtResource("3_k5pu3")
+stream_1 = SubResource("AudioStreamPlaylist_5tvy6")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_fg7tc"]
+shuffle = true
+stream_count = 2
+stream_0 = ExtResource("7_fkrx8")
+stream_1 = ExtResource("8_mwgft")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_2mmot"]
+stream_count = 2
+stream_0 = ExtResource("6_2sb77")
+stream_1 = SubResource("AudioStreamPlaylist_fg7tc")
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gwrw2"]
+clip_count = 3
+clip_0/name = &"level1.music"
+clip_0/stream = SubResource("AudioStreamPlaylist_o13t2")
+clip_0/auto_advance = 0
+clip_1/name = &"level2.music"
+clip_1/stream = SubResource("AudioStreamPlaylist_2mmot")
+clip_1/auto_advance = 0
+clip_2/name = &"void.music"
+clip_2/stream = ExtResource("9_iqu8w")
+clip_2/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 1,
+"to_time": 0
+},
+Vector2i(1, 1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 1,
+"to_time": 0
+},
+Vector2i(2, 2): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 1,
+"to_time": 0
+}
+}
+
+[sub_resource type="GDScript" id="GDScript_2sb77"]
+script/source = "extends AudioStreamPlayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="game" type="Node2D" unique_id=990088837]
+script = SubResource("GDScript_5fr2l")
 
 [node name="Player" parent="." unique_id=328166879 instance=ExtResource("1_v3uhd")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1675722495]
+script = ExtResource("2_2sb77")
 
 [node name="Grunt" parent="." unique_id=1709366035 node_paths=PackedStringArray("target") instance=ExtResource("2_ufxs0")]
 position = Vector2(-408, 15)
 target = NodePath("../Player")
+
+[node name="WorldAudioManager" type="Node" parent="." unique_id=36362369]
+script = ExtResource("3_5fr2l")
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="WorldAudioManager" unique_id=1462482884]
+stream = SubResource("AudioStreamInteractive_gwrw2")
+autoplay = true
+script = SubResource("GDScript_2sb77")
